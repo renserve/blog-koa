@@ -1,0 +1,6 @@
+[
+    {
+        "name": "blog-koa",
+        "script": "npm run start:prod"
+    }
+]
