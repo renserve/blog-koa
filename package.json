@@ -55,6 +55,7 @@
     "dependencies": {
         "@koa/cors": "^2.2.3",
         "axios": "^0.21.0",
+        "babel-core": "^6.26.3",
         "koa": "^2.7.0",
         "koa-bodyparser": "^4.2.1",
         "koa-helmet": "^6.0.0",
