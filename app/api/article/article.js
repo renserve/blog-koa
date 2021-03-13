@@ -52,7 +52,7 @@ articleApi.put("/subjoin", async (ctx) => {
 articleApi.linGet("getArticleDetailModel", "/private/:id",
     loginRequired, async (ctx) => {
         const v = await new PositiveIdValidator().validate(ctx);
-        const article = await articleDao.getArticle(ctx,v.get("path.id"));
+        const article = await articleDao.getArticle(ctx,v);
         ctx.body = article;
     });
 /**
@@ -193,7 +193,7 @@ articleApi.linPut("subjoinArticleModel", "/subjoin", loginRequired, async (ctx) 
 articleApi.get("/:id",
     async (ctx) => {
         const v = await new PositiveIdValidator().validate(ctx);
-        const article = await articleDao.getArticle(ctx,v.get("path.id"));
+        const article = await articleDao.getArticle(ctx,v);
         ctx.body = article;
     });
 // 管理后台 获取全部文章

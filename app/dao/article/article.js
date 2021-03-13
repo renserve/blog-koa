@@ -108,7 +108,9 @@ class ArticleDao {
     }
 
     // 获取文章详情
-    async getArticle(ctx, id) {
+    async getArticle(ctx, v) {
+        const id=v.get("path.id")
+        const view=v.get("query.view")
         const condition = {
             where: {id},
             attributes:{ exclude: ["operateId","authorId", "tagId", "categoryId"] },
@@ -144,7 +146,9 @@ class ArticleDao {
             }
         });
         articleCount && set(article, "total", articleCount - 1);
-        await article.increment("views");
+        if(Number(view)){
+            await article.increment("views");
+        }
         return article;
     }
     async subjoinArticle(v, options = {}) {
