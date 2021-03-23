@@ -26,7 +26,9 @@ const limitCount={
 }
 function getUserIp(ctx){
     //todo x-forwarded-for伪造
-    const ip= ctx.req.headers['x-forwarded-for'] ||
+    const ip=
+        ctx.req.headers['x-real-ip'] ||
+        ctx.req.headers['x-forwarded-for'] ||
         ctx.req.connection.remoteAddress ||
         ctx.req.socket.remoteAddress ||
         ctx.req.connection.socket.remoteAddress;
